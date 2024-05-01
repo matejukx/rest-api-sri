@@ -324,3 +324,5 @@ _Pvt_Extensions
 exclusive.lck
 *.exe
 .vscode
+
+.idea
