@@ -11,7 +11,12 @@ public class Employee
     public DateTime BirthDate { get; set; }
     public string Job { get; set; }
     
-    public List<Invoice> Invoices { get; set; }
+    public List<Invoice>? Invoices { get; set; }
     
-    public EmployeeDto ToDto() => new(Id, FirstName, LastName, BirthDate, Job, Invoices.Select(i => i.ToDto()).ToList());
+    public EmployeeDto ToDto() => new(Id, FirstName, LastName, BirthDate, Job, GetInvoiceDtos());
+
+    private List<InvoiceDto> GetInvoiceDtos()
+    {
+        return Invoices == null ? [] : Invoices.Select(i => i.ToDto()).ToList();
+    }
 }
