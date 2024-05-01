@@ -1,0 +1,490 @@
+{
+	"info": {
+		"_postman_id": "945c5e47-0214-4d0f-9a56-8882d31868e6",
+		"name": "SRI02-03",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34035157"
+	},
+	"item": [
+		{
+			"name": "Error requests",
+			"item": [
+				{
+					"name": "Create employee too young",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"firstName\": \"Jacek\",\n        \"lastName\": \"Placek\",\n        \"birthDate\": \"2023-01-01T00:00:00\",\n        \"job\": \"Admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5207/api/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5207",
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create employee empty name and job",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"firstName\": \"\",\n        \"lastName\": \"Placek\",\n        \"birthDate\": \"2003-01-01T00:00:00\",\n        \"job\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5207/api/employees",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5207",
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update employee empty name and job",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"firstName\": \"\",\n        \"lastName\": \"Placek\",\n        \"birthDate\": \"2003-01-01T00:00:00\",\n        \"job\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5207/api/employees/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5207",
+							"path": [
+								"api",
+								"employees",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new invoice negative amount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"invoiceDate\": \"2022-02-02T00:00:00\",\n        \"customerName\": \"ACME Inc.\",\n        \"amount\": -1,\n        \"paymentStatus\": \"Pending\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5207/api/invoices",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5207",
+							"path": [
+								"api",
+								"invoices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update invoice negative amount and empty status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"invoiceDate\": \"2022-02-02T00:00:00\",\n        \"customerName\": \"ACME Inc.\",\n        \"amount\": -1,\n        \"paymentStatus\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5207/api/invoices/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5207",
+							"path": [
+								"api",
+								"invoices",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Seed test data",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get all employees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5207/api/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get employee by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5207/api/employees/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"api",
+						"employees",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a new employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"firstName\": \"Jacek\",\n        \"lastName\": \"Placek\",\n        \"birthDate\": \"1981-01-01T00:00:00\",\n        \"job\": \"Admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5207/api/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update employee",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"firstName\": \"Marek\",\n        \"lastName\": \"Placek\",\n        \"birthDate\": \"1981-01-01T00:00:00\",\n        \"job\": \"Cleaner\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5207/api/employees/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"api",
+						"employees",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete employee",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5207/api/employees/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"api",
+						"employees",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get employee invoices",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5207/api/employees/2/invoices",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"api",
+						"employees",
+						"2",
+						"invoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all invoices",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5207/api/invoices",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"api",
+						"invoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new invoice for employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"invoiceDate\": \"2022-02-02T00:00:00\",\n        \"customerName\": \"ACME Inc.\",\n        \"amount\": 2000,\n        \"paymentStatus\": \"Pending\",\n        \"employeeId\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5207/api/invoices",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"api",
+						"invoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new invoice without employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"invoiceDate\": \"2022-02-02T00:00:00\",\n        \"customerName\": \"ACME Inc.\",\n        \"amount\": 2000,\n        \"paymentStatus\": \"Pending\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5207/api/invoices",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"api",
+						"invoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign invoice to employee",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5207/api/invoices/3/assign-employee/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"api",
+						"invoices",
+						"3",
+						"assign-employee",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove employee from invoice",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5207/api/invoices/3/remove-employee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"api",
+						"invoices",
+						"3",
+						"remove-employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove invoice",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5207/api/invoices/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5207",
+					"path": [
+						"api",
+						"invoices",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
